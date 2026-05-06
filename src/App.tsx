@@ -1,13 +1,15 @@
-import { GlobalStyle, Container } from './styles'
+import { GlobalStyle } from './styles'
 import Header from './components/header'
+import Banner from './components/Banner'
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <Container>
+      <div className="container">
         <Header />
-      </Container>
+      </div>
+      <Banner />
     </>
   )
 }

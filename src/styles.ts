@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components'
+import styled from 'styled-components'
 
 const Cores = {
   Branca: '#EEEEEE',
@@ -12,13 +13,21 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     box-sizing: border-box;
     font-family: "Roboto", sans-serif;
+    text-decoration: none;
+    list-style: none;
   }
   body {
     background-color: ${Cores.preta};
     color: ${Cores.Branca};
     font-family: "Roboto", sans-serif;
+    padding-top: 40px;
   }
 
 `
+const Container = styled.div`
+  max-width: 1024px;
+  margin: 0 auto;
+  width: 100%;
+`
 
-export { GlobalStyle, Cores }
+export { GlobalStyle, Cores, Container }

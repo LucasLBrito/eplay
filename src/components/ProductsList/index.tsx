@@ -1,50 +1,31 @@
 import Product from '../Product'
 import { Container, List, Title } from './styles'
 import capaDoJogo from '../../assets/images/diablo.png'
+import Game from '../../models/games'
 
 export type Props = {
   title: string
   background: 'gray' | 'black'
+  games: Game[]
 }
 
-const ProductsList = ({ title, background }: Props) => {
+const ProductsList = ({ title, background, games }: Props) => {
   return (
     <Container background={background}>
       <div className="container">
         <Title>{title}</Title>
         <List>
-          <Product
-            Title="Cyberpunk 2077"
-            categoria="RPG"
-            plataforma="PC"
-            descricao="RPG de ação em mundo aberto"
-            infos={['-10%', 'R$250']}
-            imagem={capaDoJogo}
-          />
-          <Product
-            Title="Cyberpunk 2077"
-            categoria="RPG"
-            plataforma="PC"
-            descricao="RPG de ação em mundo aberto"
-            infos={['-10%', 'R$250']}
-            imagem={capaDoJogo}
-          />
-          <Product
-            Title="Cyberpunk 2077"
-            categoria="RPG"
-            plataforma="PC"
-            descricao="RPG de ação em mundo aberto"
-            infos={['-10%', 'R$250']}
-            imagem={capaDoJogo}
-          />
-          <Product
-            Title="Cyberpunk 2077"
-            categoria="RPG"
-            plataforma="PC"
-            descricao="RPG de ação em mundo aberto"
-            infos={['-10%', 'R$250']}
-            imagem={capaDoJogo}
-          />
+          {games.map((game) => (
+            <Product
+              key={game.id}
+              Title={game.nome}
+              categoria={game.categoria}
+              plataforma={game.plataforma}
+              descricao={game.descricao}
+              infos={game.infos}
+              imagem={game.imagem}
+            />
+          ))}
         </List>
       </div>
     </Container>

@@ -4,7 +4,8 @@ const Cores = {
   Branca: '#EEEEEE',
   preta: '#111111',
   cinza: '#333333',
-  verde: '#10AC84'
+  verde: '#10AC84',
+  cinzaClaro: '#A3A3A3'
 }
 const GlobalStyle = createGlobalStyle`
   * {

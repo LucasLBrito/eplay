@@ -15,7 +15,7 @@ const Banner = () => {
             por apenas R$ 99,90
           </Precos>
         </div>
-        <Button type="link" to="/Produto">
+        <Button type="link" to="/Produto" title="Comprar Agora">
           Comprar Agora
         </Button>
       </div>

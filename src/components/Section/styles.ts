@@ -3,14 +3,18 @@ import { Cores } from '../../styles'
 import { Props } from './index'
 import { Card } from '../Product/styles'
 
-export const Container = styled.section<Omit<Props, 'title' | 'games'>>`
+export const Container = styled.section<
+  Omit<Props, 'title' | 'games' | 'background'> & {
+    $background: 'black' | 'gray'
+  }
+>`
   padding: 32px 0;
-  background-color: ${({ background }) =>
-    background === 'gray' ? Cores.cinza : Cores.preta};
+  background-color: ${({ $background }) =>
+    $background === 'gray' ? Cores.cinza : Cores.preta};
 
   ${Card} {
     background-color: ${(props) =>
-      props.background === 'gray' ? Cores.preta : Cores.cinza};
+      props.$background === 'gray' ? Cores.preta : Cores.cinza};
 
     p {
       font-size: 14px;

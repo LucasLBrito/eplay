@@ -8,7 +8,7 @@ export type Props = {
 
 const Section = ({ title, background, children }: Props) => {
   return (
-    <Container background={background}>
+    <Container $background={background}>
       <div className="container">
         <Title>{title}</Title>
         {children}

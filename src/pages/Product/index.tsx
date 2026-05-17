@@ -2,6 +2,7 @@ import { useParams } from 'react-router-dom'
 import Hero from '../../components/hero'
 import Section from '../../components/Section'
 import Galery from '../../components/Gallery'
+import cover from '../../assets/images/hogwart_galery.png'
 
 const Product = () => {
   const { id } = useParams()
@@ -38,7 +39,7 @@ const Product = () => {
           jogo.
         </p>
       </Section>
-      <Galery />
+      <Galery defaultCover={cover} />
     </>
   )
 }

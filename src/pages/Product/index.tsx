@@ -39,7 +39,7 @@ const Product = () => {
           jogo.
         </p>
       </Section>
-      <Galery defaultCover={cover} />
+      <Galery defaultCover={cover} name={'Hogwarts Legacy'} />
     </>
   )
 }

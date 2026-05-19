@@ -1,49 +1,24 @@
 import { useState } from 'react'
-
-import hogwarts1 from '../../assets/images/hogwart_galery.png'
-import hogwarts2 from '../../assets/images/Hogwarts-Legacy.jpg'
-import hogwarts3 from '../../assets/images/hogwarts-legacy_nfcv.1920.webp'
 import play from '../../assets/images/play.png'
 import Zoom from '../../assets/images/zoom.png'
 import close from '../../assets/images/close.png'
 
 import Section from '../Section'
+import { GalleryItem } from '../../models/Game'
 
 import { Items, Item, Action, Modal, ModalContent } from './styles'
 
-interface GalleryItem {
-  type: 'video' | 'image'
-  url: string
-}
-
-const mockGallery: GalleryItem[] = [
-  {
-    type: 'image',
-    url: hogwarts1
-  },
-  {
-    type: 'image',
-    url: hogwarts2
-  },
-  {
-    type: 'video',
-    url: 'https://www.youtube.com/embed/yF29baX-IsA?si=y7acsLuDgy2QvKfk'
-  },
-  {
-    type: 'image',
-    url: hogwarts3
-  }
-]
 type Props = {
   defaultCover: string
   name: string
+  items: GalleryItem[]
 }
 
 interface ModalState extends GalleryItem {
   isOpen: boolean
 }
 
-const Gallery = ({ defaultCover, name }: Props) => {
+const Gallery = ({ defaultCover, name, items }: Props) => {
   // pode usar a interface modalState para criar o estado inicial, fazendo assim que todos os valores sejam preenchidos
   const [modalState, setModalState] = useState<ModalState>({
     isOpen: false,
@@ -54,6 +29,12 @@ const Gallery = ({ defaultCover, name }: Props) => {
   const getMediaCover = (item: GalleryItem) => {
     if (item.type === 'image') {
       return item.url
+    }
+    if (item.type === 'video' && item.url.includes('youtube.com/embed/')) {
+      const videoId = item.url.split('/embed/')[1]?.split('?')[0]
+      if (videoId) {
+        return `https://img.youtube.com/vi/${videoId}/hqdefault.jpg`
+      }
     }
     return defaultCover
   }
@@ -68,7 +49,7 @@ const Gallery = ({ defaultCover, name }: Props) => {
     <>
       <Section title="Galeria" background="black">
         <Items>
-          {mockGallery.map((media) => (
+          {items.map((media) => (
             <Item
               key={media.url}
               onClick={() => {

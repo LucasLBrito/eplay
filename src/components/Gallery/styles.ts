@@ -1,8 +1,10 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { breakpoints, Cores } from '../../styles'
 
 export const Items = styled.ul`
   display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
 `
 export const Action = styled.div`
   position: absolute;
@@ -26,7 +28,6 @@ export const Action = styled.div`
 `
 
 export const Item = styled.li`
-  margin-right: 16px;
   position: relative;
   > img {
     border: 2px solid ${Cores.Branca};
@@ -103,5 +104,9 @@ export const ModalContent = styled.div`
     height: 480px;
     border-radius: 10px;
     z-index: 3;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: 90%;
   }
 `

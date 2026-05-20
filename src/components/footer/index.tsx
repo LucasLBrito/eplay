@@ -1,4 +1,9 @@
-import { FooterSection, FooterWrapper, Link, SectionTitle } from './styles'
+import {
+  FooterSection,
+  FooterWrapper,
+  LinkFooter,
+  SectionTitle
+} from './styles'
 
 const dataAtual = new Date().getFullYear()
 
@@ -10,25 +15,22 @@ const Footer = () => {
           <SectionTitle>Categorias</SectionTitle>
           <ul>
             <li>
-              <Link>RPG</Link>
+              <LinkFooter to="#adventure">Aventura</LinkFooter>
             </li>
             <li>
-              <Link>Ação</Link>
+              <LinkFooter to="#rpg">RPG</LinkFooter>
             </li>
             <li>
-              <Link>Aventura</Link>
+              <LinkFooter to="#action">Ação</LinkFooter>
             </li>
             <li>
-              <Link>Esportes</Link>
+              <LinkFooter to="#sports">Esportes</LinkFooter>
             </li>
             <li>
-              <Link>Simulação</Link>
+              <LinkFooter to="#simulation">Simulação</LinkFooter>
             </li>
             <li>
-              <Link>Estratégia</Link>
-            </li>
-            <li>
-              <Link>FPS</Link>
+              <LinkFooter to="#fighting">Luta</LinkFooter>
             </li>
           </ul>
         </FooterSection>
@@ -36,13 +38,10 @@ const Footer = () => {
           <SectionTitle>Acesso Rapido</SectionTitle>
           <ul>
             <li>
-              <Link>Novidades</Link>
+              <LinkFooter to="#on-sale">Promoções</LinkFooter>
             </li>
             <li>
-              <Link>Promoções</Link>
-            </li>
-            <li>
-              <Link>Em breve</Link>
+              <LinkFooter to="#soon">Em breve</LinkFooter>
             </li>
           </ul>
         </FooterSection>

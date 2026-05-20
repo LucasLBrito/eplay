@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { breakpoints, Cores } from '../../styles'
 import { Props } from './index'
 import { Card } from '../Product/styles'
 
@@ -19,6 +19,14 @@ export const List = styled.ul`
   grid-template-columns: repeat(4, 1fr);
   column-gap: 24px;
   margin-top: 40px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  @media (max-width: ${breakpoints.mobile}) {
+    grid-template-columns: 1fr;
+    row-gap: 24px;
+  }
 `
 
 export const Title = styled.h2`

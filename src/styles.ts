@@ -7,6 +7,12 @@ const Cores = {
   verde: '#10AC84',
   cinzaClaro: '#A3A3A3'
 }
+
+export const breakpoints = {
+  desktop: '1024px',
+  tablet: '768px',
+  mobile: '425px'
+}
 const GlobalStyle = createGlobalStyle`
   * {
     margin: 0;
@@ -27,6 +33,10 @@ const GlobalStyle = createGlobalStyle`
     max-width: 1024px;
     margin: 0 auto;
     width: 100%;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      max-width:80%;
+    }
   }
 
 `

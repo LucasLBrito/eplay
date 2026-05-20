@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { breakpoints, Cores } from '../../styles'
 
 export const HeaderBar = styled.header`
   display: flex;
@@ -20,6 +20,10 @@ export const HeaderBar = styled.header`
   div {
     display: flex;
     align-items: center;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    display: none;
   }
 `
 export const Links = styled.ul`

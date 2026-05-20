@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { breakpoints, Cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 
 export const Banner = styled.div`
@@ -11,6 +11,10 @@ export const Banner = styled.div`
   background-repeat: no-repeat;
   position: relative;
   padding-top: 16px;
+
+  @media (max-width: ${breakpoints.mobile}) {
+    background-size: cover;
+  }
 
   &::after {
     content: '';

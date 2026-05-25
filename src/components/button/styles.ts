@@ -6,10 +6,10 @@ import { Props } from '../button'
 
 export const ButtonContainer = styled.button<Props>`
   border: 2px solid
-    ${({ variant }) => (variant === 'primary' ? Cores.verde : Cores.Branca)};
+    ${({ $variant }) => ($variant === 'primary' ? Cores.verde : Cores.Branca)};
   color: ${Cores.Branca};
-  background-color: ${({ variant }) =>
-    variant === 'primary' ? Cores.verde : 'transparent'};
+  background-color: ${({ $variant }) =>
+    $variant === 'primary' ? Cores.verde : 'transparent'};
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;

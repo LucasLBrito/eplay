@@ -10,7 +10,7 @@ type RowProps = {
 }
 
 type TabButtonProps = {
-  active?: boolean
+  $active?: boolean
 }
 
 export const Row = styled.div<RowProps>`
@@ -37,6 +37,14 @@ export const InputGroup = styled.div<inputProps>`
     padding: 0 8px;
     width: 100%;
   }
+
+  small {
+    display: block;
+    font-size: 12px;
+    color: red;
+    margin-top: 4px;
+    min-height: 16px;
+  }
 `
 
 export const TabButton = styled.button<TabButtonProps>`
@@ -44,7 +52,7 @@ export const TabButton = styled.button<TabButtonProps>`
   font-size: 14px;
   font-weight: bold;
   color: ${Cores.Branca};
-  background-color: ${(props) => (props.active ? Cores.verde : Cores.preta)};
+  background-color: ${(props) => (props.$active ? Cores.verde : Cores.preta)};
   height: 32px;
   border: none;
   margin-right: 16px;

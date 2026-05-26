@@ -1,3 +1,4 @@
+import Loader from '../../components/Loader'
 import ProductsList from '../../components/ProductsList'
 import {
   useGetActionQuery,
@@ -15,7 +16,7 @@ const Categories = () => {
   const { data: rpg } = useGetRPGQuery()
 
   if (!acao || !esportes || !simulacao || !luta || !rpg) {
-    return <div>Loading...</div>
+    return <Loader />
   }
 
   return (

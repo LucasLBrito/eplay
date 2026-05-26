@@ -4,6 +4,7 @@ import {
   Links,
   LinkItem,
   BtnCart,
+  CartBadge,
   HamburgerMenu,
   HeaderRow
 } from './styles'
@@ -55,7 +56,8 @@ const Header = () => {
           </nav>
         </div>
         <BtnCart onClick={toggleCart}>
-          {items.length} <span>produto(s)</span>
+          {items.length > 0 && <CartBadge>{items.length}</CartBadge>}
+          <span>produto(s)</span>
           <img src={Carrinho} alt="Carrinho" />
         </BtnCart>
       </HeaderRow>

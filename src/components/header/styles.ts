@@ -12,6 +12,10 @@ export const Links = styled.ul`
 `
 
 export const HeaderBar = styled.header`
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
   a {
     color: ${Cores.Branca};
     text-decoration: none;
@@ -34,12 +38,26 @@ export const LinkItem = styled.li`
   }
 `
 
-export const BtnCart = styled.a`
+export const BtnCart = styled.button`
   display: flex;
   align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: ${Cores.Branca};
+  transition: color 0.2s ease, transform 0.15s ease;
 
   img {
     margin-left: 16px;
+  }
+
+  &:hover {
+    color: ${Cores.verde};
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.97);
   }
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -47,6 +65,21 @@ export const BtnCart = styled.a`
       display: none;
     }
   }
+`
+
+export const CartBadge = styled.span`
+  background-color: ${Cores.verde};
+  color: ${Cores.preta};
+  border-radius: 50%;
+  min-width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 11px;
+  font-weight: bold;
+  margin-right: 6px;
+  padding: 0 4px;
 `
 
 type HamburgerProps = {

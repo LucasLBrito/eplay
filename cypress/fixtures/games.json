@@ -1,0 +1,39 @@
+[
+  {
+    "id": 10,
+    "name": "Game Alpha",
+    "description": "Descrição do jogo Alpha para testes.",
+    "release_date": "2024-06-01",
+    "prices": { "old": 199.99, "discount": 30, "current": 139.99 },
+    "details": {
+      "category": "Ação",
+      "system": "PC",
+      "developer": "Alpha Dev",
+      "publisher": "Alpha Pub",
+      "languages": ["Inglês", "Português"]
+    },
+    "media": {
+      "thumbnail": "https://placehold.co/150",
+      "cover": "https://placehold.co/800x400",
+      "gallery": []
+    }
+  },
+  {
+    "id": 11,
+    "name": "Game Beta",
+    "description": "Descrição do jogo Beta para testes.",
+    "prices": { "current": 59.99 },
+    "details": {
+      "category": "RPG",
+      "system": "PS5",
+      "developer": "Beta Dev",
+      "publisher": "Beta Pub",
+      "languages": ["Inglês"]
+    },
+    "media": {
+      "thumbnail": "https://placehold.co/150",
+      "cover": "https://placehold.co/800x400",
+      "gallery": []
+    }
+  }
+]

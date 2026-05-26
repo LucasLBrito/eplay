@@ -36,6 +36,13 @@ export const InputGroup = styled.div<inputProps>`
     height: 32px;
     padding: 0 8px;
     width: 100%;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+
+    &:focus {
+      outline: none;
+      border-color: ${Cores.verde};
+      box-shadow: 0 0 0 3px rgba(16, 172, 132, 0.15);
+    }
   }
 
   small {
@@ -45,6 +52,31 @@ export const InputGroup = styled.div<inputProps>`
     margin-top: 4px;
     min-height: 16px;
   }
+`
+
+export const ErrorMessage = styled.p`
+  background-color: rgba(231, 76, 60, 0.12);
+  border: 1px solid rgba(231, 76, 60, 0.4);
+  color: #e74c3c;
+  border-radius: 8px;
+  padding: 12px 16px;
+  margin-top: 16px;
+  font-size: 14px;
+  font-weight: 500;
+`
+
+export const SuccessIcon = styled.div`
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: ${Cores.verde};
+  color: ${Cores.preta};
+  font-size: 28px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 24px;
 `
 
 export const TabButton = styled.button<TabButtonProps>`

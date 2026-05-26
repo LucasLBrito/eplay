@@ -4,7 +4,14 @@
       "Bash(npm install *)",
       "Bash(node -e \"const pkg = require\\('c:/Users/LUCAS/OneDrive/Documentos/MeuProjetos/eplay/node_modules/react-router-dom/package.json'\\); console.log\\('main:', pkg.main, 'module:', pkg.module, 'exports keys:', Object.keys\\(pkg.exports || {}\\).slice\\(0,5\\)\\)\")",
       "Bash(node -e \"const pkg = require\\('c:/Users/LUCAS/OneDrive/Documentos/MeuProjetos/eplay/node_modules/react-router/package.json'\\); console.log\\(JSON.stringify\\(pkg.exports['./dom'], null, 2\\)\\)\")",
-      "Bash(npx react-scripts *)"
+      "Bash(npx react-scripts *)",
+      "Bash(Get-ChildItem -Path src -Recurse -Directory)",
+      "Bash(Select-Object FullName)",
+      "Bash(git mv *)",
+      "PowerShell(Copy-Item -Recurse \"c:\\\\Users\\\\LUCAS\\\\OneDrive\\\\Documentos\\\\MeuProjetos\\\\eplay\\\\src\\\\components\\\\header\" \"c:\\\\Users\\\\LUCAS\\\\OneDrive\\\\Documentos\\\\MeuProjetos\\\\eplay\\\\src\\\\components\\\\Header\")",
+      "PowerShell(Copy-Item -Recurse \"c:\\\\Users\\\\LUCAS\\\\OneDrive\\\\Documentos\\\\MeuProjetos\\\\eplay\\\\src\\\\components\\\\header\" \"c:\\\\Users\\\\LUCAS\\\\OneDrive\\\\Documentos\\\\MeuProjetos\\\\eplay\\\\src\\\\components\\\\Header2\")",
+      "PowerShell(Rename-Item \"c:\\\\Users\\\\LUCAS\\\\OneDrive\\\\Documentos\\\\MeuProjetos\\\\eplay\\\\src\\\\components\\\\Header2\" \"Header\")",
+      "Bash(npm test *)"
     ]
   }
 }

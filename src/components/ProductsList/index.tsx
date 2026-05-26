@@ -33,7 +33,7 @@ const ProductsList = ({ title, background, games, id }: Props) => {
             <li key={game.id}>
               <Product
                 id={game.id}
-                Title={game.name}
+                title={game.name}
                 categoria={game.details.category}
                 plataforma={game.details.system}
                 descricao={game.description}

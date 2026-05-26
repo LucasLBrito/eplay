@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { Cores } from '../../styles'
 import { TagContainer } from '../Tag/styles'
-import { ButtonContainer } from '../button/styles'
+import { ButtonContainer } from '../Button/styles'
 import fechar from '../../assets/images/close.png'
 
 export const Overlay = styled.div`
@@ -11,22 +11,8 @@ export const Overlay = styled.div`
   width: 100%;
   height: 100%;
   background-color: #000;
-  opacity: 0.5;
-`
-
-export const CartContainer = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  justify-content: flex-end;
-  z-index: 10;
-
-  &.is-open {
-    display: flex;
-  }
+  opacity: 0;
+  transition: opacity 0.3s ease;
 `
 
 export const SideBar = styled.aside`
@@ -37,12 +23,47 @@ export const SideBar = styled.aside`
   padding-top: 40px;
   padding-left: 16px;
   padding-right: 16px;
+  transform: translateX(100%);
+  transition: transform 0.3s ease;
+  overflow-y: auto;
 
   ${ButtonContainer} {
     max-width: 100%;
     width: 100%;
   }
 `
+
+export const CartContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 10;
+  pointer-events: none;
+
+  &.is-open {
+    pointer-events: auto;
+
+    ${Overlay} {
+      opacity: 0.5;
+    }
+
+    ${SideBar} {
+      transform: translateX(0);
+    }
+  }
+`
+
+export const EmptyCart = styled.p`
+  color: ${Cores.cinzaClaro};
+  text-align: center;
+  margin-top: 40px;
+  font-size: 16px;
+`
+
 export const Prices = styled.p`
   font-weight: bold;
   font-size: 16px;
@@ -55,6 +76,7 @@ export const Prices = styled.p`
     color: ${Cores.cinzaClaro};
   }
 `
+
 export const Quantity = styled.p`
   font-weight: bold;
   font-size: 16px;
@@ -62,6 +84,7 @@ export const Quantity = styled.p`
   margin-top: 32px;
   margin-bottom: 16px;
 `
+
 export const CartItem = styled.li`
   display: flex;
   border-bottom: 1px solid ${Cores.cinzaClaro};

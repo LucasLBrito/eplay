@@ -9,14 +9,29 @@ export const Card = styled(Link)`
   padding: 8px;
   border-radius: 8px;
   text-decoration: none;
-  color: ${Cores.Branca};
   display: block;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  }
+
+  &:focus-visible {
+    outline: 2px solid ${Cores.verde};
+    outline-offset: 4px;
+  }
 
   img {
     display: block;
     width: 100%;
     height: 250px;
     object-fit: cover;
+    transition: transform 0.25s ease;
+  }
+
+  &:hover img {
+    transform: scale(1.03);
   }
 
   ${TagContainer} {

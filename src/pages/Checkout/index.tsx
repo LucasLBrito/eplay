@@ -1,6 +1,6 @@
-import Button from '../../components/button'
+import Button from '../../components/Button'
 import Card from '../../components/Card'
-import { InputGroup, Row, TabButton } from './styles'
+import { InputGroup, Row, TabButton, ErrorMessage, SuccessIcon } from './styles'
 import boleto from '../../assets/images/barcode.png'
 import card from '../../assets/images/credit-card.png'
 import { useFormik } from 'formik'
@@ -21,7 +21,7 @@ const Checkout = () => {
       deliveryEmail: '',
       checkEmail: '',
       payWithCard: false,
-      cardOweer: '',
+      cardOwner: '',
       cardCpf: '',
       nameCard: '',
       cardNumber: '',
@@ -48,7 +48,7 @@ const Checkout = () => {
         .oneOf([Yup.ref('deliveryEmail')], 'Os e-mails não coincidem')
         .required('A confirmação do e-mail é obrigatória'),
       payWithCard: Yup.boolean(),
-      cardOweer: Yup.string().when('payWithCard', {
+      cardOwner: Yup.string().when('payWithCard', {
         is: true,
         then: (schema) =>
           schema
@@ -115,7 +115,7 @@ const Checkout = () => {
             active: values.payWithCard,
             owner: values.payWithCard
               ? {
-                  name: values.cardOweer,
+                  name: values.cardOwner,
                   document: values.cardCpf
                 }
               : undefined,
@@ -133,7 +133,6 @@ const Checkout = () => {
           installments: parseInt(values.installments)
         }
       }
-      console.log('payload enviado:', JSON.stringify(payload, null, 2))
       purchaseGame(payload)
     }
   })
@@ -153,6 +152,7 @@ const Checkout = () => {
       <div className="container">
         <Card title="Muito obrigado pela sua compra!">
           <>
+            <SuccessIcon>✓</SuccessIcon>
             <p>
               É com satisfação que informamos que recebemos seu pedido com
               sucesso! Abaixo estão os detalhes da sua compra:
@@ -289,18 +289,18 @@ const Checkout = () => {
                 <>
                   <Row>
                     <InputGroup>
-                      <label htmlFor="CardOweer">
+                      <label htmlFor="CardOwner">
                         Nome do titular do cartão
                       </label>
                       <input
                         type="text"
-                        id="CardOweer"
-                        name="cardOweer"
-                        value={form.values.cardOweer}
+                        id="CardOwner"
+                        name="cardOwner"
+                        value={form.values.cardOwner}
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}
                       />
-                      <small>{getErrorMessage('cardOweer')}</small>
+                      <small>{getErrorMessage('cardOwner')}</small>
                     </InputGroup>
                     <InputGroup>
                       <label htmlFor="CarDcpf">CPF do titular do cartão</label>
@@ -417,7 +417,9 @@ const Checkout = () => {
           {isLoading ? 'Finalizando compra...' : 'Finalizar compra'}
         </Button>
         {error && (
-          <p>Ocorreu um erro ao finalizar a compra. Tente novamente.</p>
+          <ErrorMessage>
+            Ocorreu um erro ao finalizar a compra. Tente novamente.
+          </ErrorMessage>
         )}
       </form>
     </div>

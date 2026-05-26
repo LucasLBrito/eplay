@@ -1,4 +1,5 @@
 import Banner from '../../components/Banner'
+import Loader from '../../components/Loader'
 import ProductsList from '../../components/ProductsList'
 
 import { useGetOnSaleQuery, useGetSoonQuery } from '../../services/api'
@@ -7,7 +8,7 @@ const Home = () => {
   const { data: promocoes } = useGetOnSaleQuery()
   const { data: emBreve } = useGetSoonQuery()
 
-  if (!promocoes || !emBreve) return <div>Carregando...</div>
+  if (!promocoes || !emBreve) return <Loader />
 
   return (
     <div>

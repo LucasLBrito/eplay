@@ -1,11 +1,11 @@
 import { Imagem, Titulo, Precos } from './styles'
-import Button from '../button'
+import Button from '../Button'
 import Tag from '../Tag'
 import { formatPrice } from '../../utils'
 import { useGetFeaturedGameQuery } from '../../services/api'
 
 const Banner = () => {
-  const { data: game, isLoading } = useGetFeaturedGameQuery()
+  const { data: game } = useGetFeaturedGameQuery()
 
   if (!game) {
     return <h3>Carregando...</h3>

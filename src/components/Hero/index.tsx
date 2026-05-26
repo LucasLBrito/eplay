@@ -1,6 +1,6 @@
 import { Banner, Infos } from './styled'
 import Tag from '../Tag'
-import Button from '../button'
+import Button from '../Button'
 import Game from '../../models/Game'
 import { formatPrice } from '../../utils'
 import { useDispatch } from 'react-redux'

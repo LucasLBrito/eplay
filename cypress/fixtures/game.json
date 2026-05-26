@@ -1,0 +1,22 @@
+{
+  "id": 1,
+  "name": "Cypress Test Game",
+  "description": "Jogo utilizado nos testes automatizados E2E.",
+  "prices": {
+    "old": 199.99,
+    "discount": 30,
+    "current": 139.99
+  },
+  "details": {
+    "category": "Ação",
+    "system": "PC",
+    "developer": "Test Dev",
+    "publisher": "Test Publisher",
+    "languages": ["Inglês", "Português"]
+  },
+  "media": {
+    "thumbnail": "https://placehold.co/150",
+    "cover": "https://placehold.co/800x400",
+    "gallery": []
+  }
+}

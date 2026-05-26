@@ -1,6 +1,43 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import Game from '../models/Game'
-import { get } from 'http'
+
+type Product = {
+  id: string
+  price: number
+}
+
+type PurchaseResponse = {
+  orderId: string
+}
+
+type PurchasePayload = {
+  products: Product[]
+  billing: {
+    name: string
+    email: string
+    document: string
+  }
+  delivery: {
+    email: string
+  }
+  payment: {
+    card: {
+      active: boolean
+      owner?: {
+        name: string
+        document: string
+      }
+      name?: string
+      number?: string
+      expiry?: {
+        month: number
+        year: number
+      }
+      code?: string
+    }
+    installments: number
+  }
+}
 
 const api = createApi({
   baseQuery: fetchBaseQuery({
@@ -33,6 +70,13 @@ const api = createApi({
     }),
     getGameById: builder.query<Game, string>({
       query: (id) => `/jogos/${id}`
+    }),
+    purchaseGame: builder.mutation<PurchaseResponse, PurchasePayload>({
+      query: (body) => ({
+        url: '/checkout',
+        method: 'POST',
+        body
+      })
     })
   })
 })
@@ -46,7 +90,8 @@ export const {
   useGetSimulationQuery,
   useGetFightingQuery,
   useGetRPGQuery,
-  useGetGameByIdQuery
+  useGetGameByIdQuery,
+  usePurchaseGameMutation
 } = api
 
 export default api

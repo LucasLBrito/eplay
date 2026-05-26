@@ -15,22 +15,34 @@ const Footer = () => {
           <SectionTitle>Categorias</SectionTitle>
           <ul>
             <li>
-              <LinkFooter to="#adventure">Aventura</LinkFooter>
+              <LinkFooter to="#adventure" title="Aventura">
+                Aventura
+              </LinkFooter>
             </li>
             <li>
-              <LinkFooter to="#rpg">RPG</LinkFooter>
+              <LinkFooter to="#rpg" title="RPG">
+                RPG
+              </LinkFooter>
             </li>
             <li>
-              <LinkFooter to="#action">Ação</LinkFooter>
+              <LinkFooter to="#action" title="Ação">
+                Ação
+              </LinkFooter>
             </li>
             <li>
-              <LinkFooter to="#sports">Esportes</LinkFooter>
+              <LinkFooter to="#sports" title="Esportes">
+                Esportes
+              </LinkFooter>
             </li>
             <li>
-              <LinkFooter to="#simulation">Simulação</LinkFooter>
+              <LinkFooter to="#simulation" title="Simulação">
+                Simulação
+              </LinkFooter>
             </li>
             <li>
-              <LinkFooter to="#fighting">Luta</LinkFooter>
+              <LinkFooter to="#fighting" title="Luta">
+                Luta
+              </LinkFooter>
             </li>
           </ul>
         </FooterSection>
@@ -38,10 +50,14 @@ const Footer = () => {
           <SectionTitle>Acesso Rapido</SectionTitle>
           <ul>
             <li>
-              <LinkFooter to="#on-sale">Promoções</LinkFooter>
+              <LinkFooter to="#on-sale" title="Promoções">
+                Promoções
+              </LinkFooter>
             </li>
             <li>
-              <LinkFooter to="#soon">Em breve</LinkFooter>
+              <LinkFooter to="#soon" title="Em breve">
+                Em breve
+              </LinkFooter>
             </li>
           </ul>
         </FooterSection>

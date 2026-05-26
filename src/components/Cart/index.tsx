@@ -9,6 +9,7 @@ import {
 } from './styles'
 import Tag from '../Tag'
 import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
 import { RootReducer } from '../../store'
 import { removeItem, toggleOpen } from '../../store/reducers/shopingCart'
 import { formatPrice } from '../../utils'
@@ -23,9 +24,15 @@ const Cart = () => {
   }
 
   const dispatch = useDispatch()
+  const navigate = useNavigate()
 
   const toggleCart = () => {
     dispatch(toggleOpen())
+  }
+
+  const goToCheckout = () => {
+    dispatch(toggleOpen())
+    navigate('/checkout')
   }
 
   const totalPrice = items.reduce((total, item) => {
@@ -54,7 +61,11 @@ const Cart = () => {
         <Prices>
           Total: R$ {formatPrice(totalPrice)} <span>Em até 6x sem juros</span>
         </Prices>
-        <Button title="clique para finalizar a compra" type="button">
+        <Button
+          title="clique para finalizar a compra"
+          type="button"
+          onClick={goToCheckout}
+        >
           Continuar com a Comprar
         </Button>
       </SideBar>

@@ -1,38 +1,37 @@
 import styled from 'styled-components'
 import { breakpoints, Cores } from '../../styles'
 
-export const HeaderBar = styled.header`
+export const Links = styled.ul`
   display: flex;
-  align-items: center;
-  background-color: ${Cores.cinza};
-  padding: 24px;
-  border-radius: 16px;
-  margin-bottom: 80px;
-  justify-content: space-between;
+  margin-left: 40px;
 
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-left: 0;
+    display: block;
+  }
+`
+
+export const HeaderBar = styled.header`
   a {
     color: ${Cores.Branca};
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
   }
-
-  div {
-    display: flex;
-    align-items: center;
-  }
-
-  @media (max-width: ${breakpoints.mobile}) {
-    display: none;
-  }
 `
-export const Links = styled.ul`
-  display: flex;
-  margin-left: 40px;
-`
+
 export const LinkItem = styled.li`
   list-style: none;
   margin-right: 16px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin-right: 0;
+
+    a {
+      display: block;
+      padding: 8px 0;
+    }
+  }
 `
 
 export const BtnCart = styled.a`
@@ -41,5 +40,72 @@ export const BtnCart = styled.a`
 
   img {
     margin-left: 16px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    span {
+      display: none;
+    }
+  }
+`
+
+type HamburgerProps = {
+  $isOpen: boolean
+}
+
+export const HamburgerMenu = styled.div<HamburgerProps>`
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+
+  span {
+    display: none;
+    height: 3px;
+    width: 25px;
+    background-color: ${Cores.Branca};
+    margin-bottom: 4px;
+    border-radius: 2px;
+    transition: all 0.3s ease;
+    transform-origin: center;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: flex;
+
+    span {
+      display: block;
+    }
+
+    ${({ $isOpen }) =>
+      $isOpen &&
+      `
+      span:first-child { transform: rotate(45deg) translate(5px, 5px); }
+      span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+      span:last-child  { transform: rotate(-45deg) translate(5px, -5px); }
+    `}
+  }
+`
+
+export const HeaderRow = styled.div`
+  display: flex;
+  align-items: center;
+  background-color: ${Cores.cinza};
+  padding: 24px;
+  border-radius: 16px;
+  margin-bottom: 80px;
+  justify-content: space-between;
+
+  .header-content {
+    display: flex;
+    align-items: center;
+
+    @media (max-width: ${breakpoints.tablet}) {
+      flex: 1;
+      justify-content: space-between;
+
+      ${Links} {
+        display: none;
+      }
+    }
   }
 `

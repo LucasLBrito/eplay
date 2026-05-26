@@ -1,4 +1,13 @@
-import { HeaderBar, Links, LinkItem, BtnCart } from './styles'
+import { useState } from 'react'
+import {
+  HeaderBar,
+  Links,
+  LinkItem,
+  BtnCart,
+  HamburgerMenu,
+  HeaderRow
+} from './styles'
+import NavMobile from './NavMobile'
 import logo from '../../assets/images/logo.svg'
 import Carrinho from '../../assets/images/carrinho.svg'
 import { Link } from 'react-router-dom'
@@ -10,6 +19,7 @@ import { RootReducer } from '../../store'
 const Header = () => {
   const dispatch = useDispatch()
   const { items } = useSelector((state: RootReducer) => state.Cart)
+  const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const toggleCart = () => {
     dispatch(toggleOpen())
@@ -17,28 +27,39 @@ const Header = () => {
 
   return (
     <HeaderBar>
-      <div>
-        <Link to="/">
-          <img src={logo} alt="Logo" />
-        </Link>
-        <nav>
-          <Links>
-            <LinkItem>
-              <Link to="/categories">Categorias</Link>
-            </LinkItem>
-            <LinkItem>
-              <a href="#">Novidades</a>
-            </LinkItem>
-            <LinkItem>
-              <a href="#">Promoções</a>
-            </LinkItem>
-          </Links>
-        </nav>
-      </div>
-      <BtnCart onClick={toggleCart}>
-        {items.length} - produto(s)
-        <img src={Carrinho} alt="Carrinho" />
-      </BtnCart>
+      <HeaderRow>
+        <div className="header-content">
+          <HamburgerMenu
+            $isOpen={isMenuOpen}
+            onClick={() => setIsMenuOpen((prev) => !prev)}
+          >
+            <span />
+            <span />
+            <span />
+          </HamburgerMenu>
+          <Link to="/">
+            <img src={logo} alt="Logo" />
+          </Link>
+          <nav>
+            <Links>
+              <LinkItem>
+                <Link to="/categories">Categorias</Link>
+              </LinkItem>
+              <LinkItem>
+                <a href="#">Novidades</a>
+              </LinkItem>
+              <LinkItem>
+                <a href="#">Promoções</a>
+              </LinkItem>
+            </Links>
+          </nav>
+        </div>
+        <BtnCart onClick={toggleCart}>
+          {items.length} <span>produto(s)</span>
+          <img src={Carrinho} alt="Carrinho" />
+        </BtnCart>
+      </HeaderRow>
+      <NavMobile isOpen={isMenuOpen} onClose={() => setIsMenuOpen(false)} />
     </HeaderBar>
   )
 }

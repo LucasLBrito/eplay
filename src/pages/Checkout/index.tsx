@@ -11,6 +11,17 @@ import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { useNavigate } from 'react-router-dom'
 import { clearCart } from '../../store/reducers/shoppingCart'
+import { formatPrice } from '../../utils'
+
+const formatCpf = (value: string) =>
+  value
+    .replace(/\D/g, '')
+    .slice(0, 11)
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d)/, '$1.$2')
+    .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
+
+const INSTALLMENT_COUNT = 4
 
 const Checkout = () => {
   const [purchaseGame, { isLoading, error, data, isSuccess }] =
@@ -18,6 +29,11 @@ const Checkout = () => {
   const { items } = useSelector((state: RootReducer) => state.Cart)
   const navigate = useNavigate()
   const dispatch = useDispatch()
+
+  const totalPrice = items.reduce(
+    (acc, item) => acc + (item.prices.current ?? 0),
+    0
+  )
 
   useEffect(() => {
     if (items.length === 0 && !isSuccess) {
@@ -248,7 +264,9 @@ const Checkout = () => {
                   id="cpf"
                   name="cpf"
                   value={form.values.cpf}
-                  onChange={form.handleChange}
+                  onChange={(e) =>
+                    form.setFieldValue('cpf', formatCpf(e.target.value))
+                  }
                   onBlur={form.handleBlur}
                 />
                 <small>{getErrorMessage('cpf')}</small>
@@ -326,7 +344,12 @@ const Checkout = () => {
                         id="cardCpf"
                         name="cardCpf"
                         value={form.values.cardCpf}
-                        onChange={form.handleChange}
+                        onChange={(e) =>
+                          form.setFieldValue(
+                            'cardCpf',
+                            formatCpf(e.target.value)
+                          )
+                        }
                         onBlur={form.handleBlur}
                       />
                       <small>{getErrorMessage('cardCpf')}</small>
@@ -404,10 +427,14 @@ const Checkout = () => {
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}
                       >
-                        <option value="1">1x sem juros</option>
-                        <option value="2">2x sem juros</option>
-                        <option value="3">3x sem juros</option>
-                        <option value="4">4x sem juros</option>
+                        {Array.from({ length: INSTALLMENT_COUNT }, (_, i) => {
+                          const n = i + 1
+                          return (
+                            <option key={n} value={n}>
+                              {n}x de {formatPrice(totalPrice / n)} sem juros
+                            </option>
+                          )
+                        })}
                       </select>
                       <small>{getErrorMessage('installments')}</small>
                     </InputGroup>

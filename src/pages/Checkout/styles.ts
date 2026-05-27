@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { Colors } from '../../styles'
 
 type inputProps = {
   maxWidth?: string
@@ -31,8 +31,8 @@ export const InputGroup = styled.div<inputProps>`
 
   input,
   select {
-    background-color: ${Cores.Branca};
-    border: 1px solid ${Cores.Branca};
+    background-color: ${Colors.white};
+    border: 1px solid ${Colors.white};
     height: 32px;
     padding: 0 8px;
     width: 100%;
@@ -40,7 +40,7 @@ export const InputGroup = styled.div<inputProps>`
 
     &:focus {
       outline: none;
-      border-color: ${Cores.verde};
+      border-color: ${Colors.green};
       box-shadow: 0 0 0 3px rgba(16, 172, 132, 0.15);
     }
   }
@@ -69,8 +69,8 @@ export const SuccessIcon = styled.div`
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background-color: ${Cores.verde};
-  color: ${Cores.preta};
+  background-color: ${Colors.green};
+  color: ${Colors.black};
   font-size: 28px;
   font-weight: bold;
   display: flex;
@@ -83,8 +83,8 @@ export const TabButton = styled.button<TabButtonProps>`
   border-radius: 8px;
   font-size: 14px;
   font-weight: bold;
-  color: ${Cores.Branca};
-  background-color: ${(props) => (props.$active ? Cores.verde : Cores.preta)};
+  color: ${Colors.white};
+  background-color: ${(props) => (props.$active ? Colors.green : Colors.black)};
   height: 32px;
   border: none;
   margin-right: 16px;

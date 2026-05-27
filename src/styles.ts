@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 
-const Cores = {
-  Branca: '#EEEEEE',
-  preta: '#111111',
-  cinza: '#333333',
-  verde: '#10AC84',
-  cinzaClaro: '#A3A3A3'
+const Colors = {
+  white: '#EEEEEE',
+  black: '#111111',
+  gray: '#333333',
+  green: '#10AC84',
+  lightGray: '#A3A3A3'
 }
 
 export const breakpoints = {
@@ -23,8 +23,8 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
   body {
-    background-color: ${Cores.preta};
-    color: ${Cores.Branca};
+    background-color: ${Colors.black};
+    color: ${Colors.white};
     font-family: "Roboto", sans-serif;
     padding-top: 40px;
   }
@@ -41,4 +41,4 @@ const GlobalStyle = createGlobalStyle`
 
 `
 
-export { GlobalStyle, Cores }
+export { GlobalStyle, Colors }

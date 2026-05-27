@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { Provider } from 'react-redux'
 import { MemoryRouter } from 'react-router-dom'
 import { configureStore } from '@reduxjs/toolkit'
-import shoppingCartReducer from '../../store/reducers/shopingCart'
+import shoppingCartReducer from '../../store/reducers/shoppingCart'
 import { Game } from '../../models/Game'
 import Checkout from './index'
 

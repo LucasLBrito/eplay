@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, Cores } from '../../styles'
+import { breakpoints, Colors } from '../../styles'
 
 export const Links = styled.ul`
   display: flex;
@@ -17,7 +17,7 @@ export const HeaderBar = styled.header`
   z-index: 100;
 
   a {
-    color: ${Cores.Branca};
+    color: ${Colors.white};
     text-decoration: none;
     font-weight: bold;
     font-size: 16px;
@@ -44,7 +44,7 @@ export const BtnCart = styled.button`
   background: none;
   border: none;
   cursor: pointer;
-  color: ${Cores.Branca};
+  color: ${Colors.white};
   transition: color 0.2s ease, transform 0.15s ease;
 
   img {
@@ -52,7 +52,7 @@ export const BtnCart = styled.button`
   }
 
   &:hover {
-    color: ${Cores.verde};
+    color: ${Colors.green};
     transform: scale(1.05);
   }
 
@@ -68,8 +68,8 @@ export const BtnCart = styled.button`
 `
 
 export const CartBadge = styled.span`
-  background-color: ${Cores.verde};
-  color: ${Cores.preta};
+  background-color: ${Colors.green};
+  color: ${Colors.black};
   border-radius: 50%;
   min-width: 20px;
   height: 20px;
@@ -95,7 +95,7 @@ export const HamburgerMenu = styled.div<HamburgerProps>`
     display: none;
     height: 3px;
     width: 25px;
-    background-color: ${Cores.Branca};
+    background-color: ${Colors.white};
     margin-bottom: 4px;
     border-radius: 2px;
     transition: all 0.3s ease;
@@ -122,7 +122,7 @@ export const HamburgerMenu = styled.div<HamburgerProps>`
 export const HeaderRow = styled.div`
   display: flex;
   align-items: center;
-  background-color: ${Cores.cinza};
+  background-color: ${Colors.gray};
   padding: 24px;
   border-radius: 16px;
   margin-bottom: 80px;

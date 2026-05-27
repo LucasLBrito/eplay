@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { Colors } from '../../styles'
 import { TagContainer } from '../Tag/styles'
 import { ButtonContainer } from '../Button/styles'
 import fechar from '../../assets/images/close.png'
@@ -18,7 +18,7 @@ export const Overlay = styled.div`
 export const SideBar = styled.aside`
   max-width: 360px;
   width: 100%;
-  background-color: ${Cores.cinza};
+  background-color: ${Colors.gray};
   z-index: 10;
   padding-top: 40px;
   padding-left: 16px;
@@ -58,7 +58,7 @@ export const CartContainer = styled.div`
 `
 
 export const EmptyCart = styled.p`
-  color: ${Cores.cinzaClaro};
+  color: ${Colors.lightGray};
   text-align: center;
   margin-top: 40px;
   font-size: 16px;
@@ -67,27 +67,27 @@ export const EmptyCart = styled.p`
 export const Prices = styled.p`
   font-weight: bold;
   font-size: 16px;
-  color: ${Cores.Branca};
+  color: ${Colors.white};
   margin-bottom: 24px;
 
   span {
     display: block;
     font-size: 12px;
-    color: ${Cores.cinzaClaro};
+    color: ${Colors.lightGray};
   }
 `
 
 export const Quantity = styled.p`
   font-weight: bold;
   font-size: 16px;
-  color: ${Cores.Branca};
+  color: ${Colors.white};
   margin-top: 32px;
   margin-bottom: 16px;
 `
 
 export const CartItem = styled.li`
   display: flex;
-  border-bottom: 1px solid ${Cores.cinzaClaro};
+  border-bottom: 1px solid ${Colors.lightGray};
   padding-bottom: 8px;
   padding-top: 8px;
   position: relative;
@@ -100,14 +100,14 @@ export const CartItem = styled.li`
   }
 
   h3 {
-    color: ${Cores.Branca};
+    color: ${Colors.white};
     font-size: 16px;
     font-weight: bold;
   }
 
   span {
     display: block;
-    color: ${Cores.Branca};
+    color: ${Colors.white};
     font-size: 14px;
     font-weight: bold;
   }

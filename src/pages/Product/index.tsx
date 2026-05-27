@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom'
 import Hero from '../../components/Hero'
 import Section from '../../components/Section'
-import Galery from '../../components/Gallery'
+import Gallery from '../../components/Gallery'
 import { useGetGameByIdQuery } from '../../services/api'
 
 const Product = () => {
@@ -31,7 +31,7 @@ const Product = () => {
           {game.details.languages.join(', ')}
         </p>
       </Section>
-      <Galery
+      <Gallery
         defaultCover={game.media.cover}
         name={game.name}
         items={game.media.gallery}

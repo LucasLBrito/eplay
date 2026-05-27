@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom'
 import { GlobalStyle } from './styles'
 import Header from './components/header'
 import Footer from './components/footer'
-import Rotas from './routes'
+import AppRoutes from './routes'
 import Cart from './components/Cart'
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <div className="container">
           <Header />
         </div>
-        <Rotas />
+        <AppRoutes />
         <Footer />
         <Cart />
       </BrowserRouter>

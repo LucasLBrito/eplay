@@ -13,7 +13,7 @@ import logo from '../../assets/images/logo.svg'
 import Carrinho from '../../assets/images/carrinho.svg'
 import { Link } from 'react-router-dom'
 
-import { toggleOpen } from '../../store/reducers/shopingCart'
+import { toggleOpen } from '../../store/reducers/shoppingCart'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 

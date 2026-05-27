@@ -12,7 +12,7 @@ import Tag from '../Tag'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { RootReducer } from '../../store'
-import { removeItem, toggleOpen } from '../../store/reducers/shopingCart'
+import { removeItem, toggleOpen } from '../../store/reducers/shoppingCart'
 import { formatPrice } from '../../utils'
 
 const Cart = () => {

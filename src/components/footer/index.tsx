@@ -5,7 +5,7 @@ import {
   SectionTitle
 } from './styles'
 
-const dataAtual = new Date().getFullYear()
+const currentYear = new Date().getFullYear()
 
 const Footer = () => {
   return (
@@ -62,7 +62,7 @@ const Footer = () => {
           </ul>
         </FooterSection>
         <FooterSection>
-          <p>{dataAtual} - &copy; Eplay. Todos os direitos reservados.</p>
+          <p>{currentYear} - &copy; Eplay. Todos os direitos reservados.</p>
         </FooterSection>
       </div>
     </FooterWrapper>

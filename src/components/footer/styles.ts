@@ -1,9 +1,9 @@
 import styled from 'styled-components'
-import { Cores } from '../../styles'
+import { Colors } from '../../styles'
 import { HashLink } from 'react-router-hash-link'
 
 export const FooterWrapper = styled.footer`
-  background-color: ${Cores.cinza};
+  background-color: ${Colors.gray};
   padding: 32px 0;
   font-size: 14px;
   margin-top: 40px;
@@ -11,11 +11,11 @@ export const FooterWrapper = styled.footer`
 export const SectionTitle = styled.h4`
   font-size: 16px;
   font-weight: bold;
-  color: ${Cores.Branca};
+  color: ${Colors.white};
 `
 
 export const LinkFooter = styled(HashLink)`
-  color: ${Cores.cinzaClaro};
+  color: ${Colors.lightGray};
   text-decoration: none;
   margin-right: 8px;
 `

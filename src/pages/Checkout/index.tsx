@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import Button from '../../components/Button'
 import Card from '../../components/Card'
 import { InputGroup, Row, TabButton, ErrorMessage, SuccessIcon } from './styles'
@@ -8,11 +9,19 @@ import * as Yup from 'yup'
 import { usePurchaseGameMutation } from '../../services/api'
 import { useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
+import { useNavigate } from 'react-router-dom'
 
 const Checkout = () => {
   const [purchaseGame, { isLoading, error, data, isSuccess }] =
     usePurchaseGameMutation()
   const { items } = useSelector((state: RootReducer) => state.Cart)
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (items.length === 0) {
+      navigate('/')
+    }
+  }, [items, navigate])
   const form = useFormik({
     initialValues: {
       fullname: '',
@@ -240,10 +249,10 @@ const Checkout = () => {
             <h3 className="marginTop">Dados de entrega - conteúdo Digital</h3>
             <Row>
               <InputGroup>
-                <label htmlFor="Deliveryemail">E-mail de entrega</label>
+                <label htmlFor="deliveryEmail">E-mail de entrega</label>
                 <input
                   type="email"
-                  id="Deliveryemail"
+                  id="deliveryEmail"
                   name="deliveryEmail"
                   value={form.values.deliveryEmail}
                   onChange={form.handleChange}
@@ -252,10 +261,10 @@ const Checkout = () => {
                 <small>{getErrorMessage('deliveryEmail')}</small>
               </InputGroup>
               <InputGroup>
-                <label htmlFor="CheckEmail">Confirme o seu E-mail</label>
+                <label htmlFor="checkEmail">Confirme o seu E-mail</label>
                 <input
                   type="email"
-                  id="CheckEmail"
+                  id="checkEmail"
                   name="checkEmail"
                   value={form.values.checkEmail}
                   onChange={form.handleChange}
@@ -289,12 +298,12 @@ const Checkout = () => {
                 <>
                   <Row>
                     <InputGroup>
-                      <label htmlFor="CardOwner">
+                      <label htmlFor="cardOwner">
                         Nome do titular do cartão
                       </label>
                       <input
                         type="text"
-                        id="CardOwner"
+                        id="cardOwner"
                         name="cardOwner"
                         value={form.values.cardOwner}
                         onChange={form.handleChange}
@@ -303,10 +312,10 @@ const Checkout = () => {
                       <small>{getErrorMessage('cardOwner')}</small>
                     </InputGroup>
                     <InputGroup>
-                      <label htmlFor="CarDcpf">CPF do titular do cartão</label>
+                      <label htmlFor="cardCpf">CPF do titular do cartão</label>
                       <input
                         type="text"
-                        id="CarDcpf"
+                        id="cardCpf"
                         name="cardCpf"
                         value={form.values.cardCpf}
                         onChange={form.handleChange}
@@ -317,10 +326,10 @@ const Checkout = () => {
                   </Row>
                   <Row margin="24px">
                     <InputGroup>
-                      <label htmlFor="NameCard">Nome do cartão</label>
+                      <label htmlFor="nameCard">Nome do cartão</label>
                       <input
                         type="text"
-                        id="NameCard"
+                        id="nameCard"
                         name="nameCard"
                         value={form.values.nameCard}
                         onChange={form.handleChange}
@@ -329,10 +338,10 @@ const Checkout = () => {
                       <small>{getErrorMessage('nameCard')}</small>
                     </InputGroup>
                     <InputGroup>
-                      <label htmlFor="CardNumber">Número do cartão</label>
+                      <label htmlFor="cardNumber">Número do cartão</label>
                       <input
                         type="text"
-                        id="CardNumber"
+                        id="cardNumber"
                         name="cardNumber"
                         value={form.values.cardNumber}
                         onChange={form.handleChange}
@@ -365,10 +374,10 @@ const Checkout = () => {
                       <small>{getErrorMessage('year')}</small>
                     </InputGroup>
                     <InputGroup maxWidth="48px">
-                      <label htmlFor="CVV">CVV</label>
+                      <label htmlFor="cvv">CVV</label>
                       <input
                         type="text"
-                        id="CVV"
+                        id="cvv"
                         name="cvv"
                         value={form.values.cvv}
                         onChange={form.handleChange}
@@ -379,10 +388,10 @@ const Checkout = () => {
                   </Row>
                   <Row margin="24px">
                     <InputGroup maxWidth="150px">
-                      <label htmlFor="Installments">Parcelas</label>
+                      <label htmlFor="installments">Parcelas</label>
                       <select
                         name="installments"
-                        id="Installments"
+                        id="installments"
                         value={form.values.installments}
                         onChange={form.handleChange}
                         onBlur={form.handleBlur}

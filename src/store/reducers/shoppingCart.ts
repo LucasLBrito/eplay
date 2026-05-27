@@ -1,17 +1,17 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { Game } from '../../models/Game'
 
-type ShoppingCardState = {
+type ShoppingCartState = {
   items: Game[]
   isOpen: boolean
 }
 
-const initialState: ShoppingCardState = {
+const initialState: ShoppingCartState = {
   items: [],
   isOpen: false
 }
 
-const shoppingCardSlice = createSlice({
+const shoppingCartSlice = createSlice({
   name: 'Cart',
   initialState: initialState,
   reducers: {
@@ -29,5 +29,5 @@ const shoppingCardSlice = createSlice({
   }
 })
 
-export const { addItem, removeItem, toggleOpen } = shoppingCardSlice.actions
-export default shoppingCardSlice.reducer
+export const { addItem, removeItem, toggleOpen } = shoppingCartSlice.actions
+export default shoppingCartSlice.reducer

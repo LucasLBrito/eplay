@@ -34,11 +34,11 @@ const ProductsList = ({ title, background, games, id }: Props) => {
               <Product
                 id={game.id}
                 title={game.name}
-                categoria={game.details.category}
-                plataforma={game.details.system}
-                descricao={game.description}
+                category={game.details.category}
+                platform={game.details.system}
+                description={game.description}
                 infos={getTags(game)}
-                imagem={game.media.thumbnail}
+                image={game.media.thumbnail}
               />
             </li>
           ))}

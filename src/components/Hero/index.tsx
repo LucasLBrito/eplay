@@ -1,4 +1,4 @@
-import { Banner, Infos } from './styled'
+import { Banner, Infos } from './styles'
 import Tag from '../Tag'
 import Button from '../Button'
 import Game from '../../models/Game'
@@ -8,7 +8,7 @@ import {
   addItem,
   removeItem,
   toggleOpen
-} from '../../store/reducers/shopingCart'
+} from '../../store/reducers/shoppingCart'
 
 type Props = {
   game: Game
@@ -17,7 +17,7 @@ type Props = {
 const Hero = ({ game }: Props) => {
   const dispatch = useDispatch()
 
-  const AddToCart = () => {
+  const addToCart = () => {
     dispatch(addItem(game))
     dispatch(toggleOpen())
   }
@@ -43,7 +43,7 @@ const Hero = ({ game }: Props) => {
               $variant="primary"
               type="button"
               title="Adicionar ao carrinho"
-              onClick={AddToCart}
+              onClick={addToCart}
             >
               Adicionar ao carrinho
             </Button>

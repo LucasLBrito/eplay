@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components'
-import { Cores } from '../../styles'
+import { Colors } from '../../styles'
 
 const spin = keyframes`
   to { transform: rotate(360deg); }
@@ -16,8 +16,8 @@ const LoaderWrapper = styled.div`
 const Spinner = styled.div`
   width: 44px;
   height: 44px;
-  border: 4px solid ${Cores.cinzaClaro};
-  border-top-color: ${Cores.verde};
+  border: 4px solid ${Colors.lightGray};
+  border-top-color: ${Colors.green};
   border-radius: 50%;
   animation: ${spin} 0.7s linear infinite;
 `

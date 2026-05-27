@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { breakpoints, Cores } from '../../styles'
+import { breakpoints, Colors } from '../../styles'
 
 export const Items = styled.ul`
   display: flex;
@@ -30,7 +30,7 @@ export const Action = styled.div`
 export const Item = styled.li`
   position: relative;
   > img {
-    border: 2px solid ${Cores.Branca};
+    border: 2px solid ${Colors.white};
     border-radius: 8px;
     width: 150px;
     height: 150px;

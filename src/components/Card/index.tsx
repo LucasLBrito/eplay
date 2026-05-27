@@ -1,7 +1,8 @@
+import React from 'react'
 import { CardWrapper } from './styles'
 
 type Props = {
-  children: JSX.Element
+  children: React.ReactNode
   title: string
 }
 

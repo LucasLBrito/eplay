@@ -16,14 +16,14 @@ const NavMobile = ({ isOpen, onClose }: Props) => (
         </Link>
       </LinkItem>
       <LinkItem>
-        <a href="#" onClick={onClose}>
+        <Link to="/" onClick={onClose}>
           Novidades
-        </a>
+        </Link>
       </LinkItem>
       <LinkItem>
-        <a href="#" onClick={onClose}>
+        <Link to="/" onClick={onClose}>
           Promoções
-        </a>
+        </Link>
       </LinkItem>
     </Links>
   </Nav>

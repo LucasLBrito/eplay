@@ -1,15 +1,15 @@
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import { Cores } from '../../styles'
+import { Colors } from '../../styles'
 
 import { Props } from '../Button'
 
 export const ButtonContainer = styled.button<Props>`
   border: 2px solid
-    ${({ $variant }) => ($variant === 'primary' ? Cores.verde : Cores.Branca)};
-  color: ${Cores.Branca};
+    ${({ $variant }) => ($variant === 'primary' ? Colors.green : Colors.white)};
+  color: ${Colors.white};
   background-color: ${({ $variant }) =>
-    $variant === 'primary' ? Cores.verde : 'transparent'};
+    $variant === 'primary' ? Colors.green : 'transparent'};
   padding: 8px 16px;
   border-radius: 8px;
   cursor: pointer;
@@ -40,8 +40,8 @@ export const ButtonContainer = styled.button<Props>`
 `
 
 export const LinkButtonContainer = styled(Link)`
-  border: 2px solid ${Cores.Branca};
-  color: ${Cores.Branca};
+  border: 2px solid ${Colors.white};
+  color: ${Colors.white};
   background-color: transparent;
   padding: 8px 16px;
   border-radius: 8px;
@@ -62,7 +62,7 @@ export const LinkButtonContainer = styled(Link)`
   }
 
   &:focus-visible {
-    outline: 2px solid ${Cores.Branca};
+    outline: 2px solid ${Colors.white};
     outline-offset: 3px;
   }
 `

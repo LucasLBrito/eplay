@@ -7,21 +7,29 @@ import card from '../../assets/images/credit-card.png'
 import { useFormik } from 'formik'
 import * as Yup from 'yup'
 import { usePurchaseGameMutation } from '../../services/api'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { RootReducer } from '../../store'
 import { useNavigate } from 'react-router-dom'
+import { clearCart } from '../../store/reducers/shoppingCart'
 
 const Checkout = () => {
   const [purchaseGame, { isLoading, error, data, isSuccess }] =
     usePurchaseGameMutation()
   const { items } = useSelector((state: RootReducer) => state.Cart)
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   useEffect(() => {
-    if (items.length === 0) {
+    if (items.length === 0 && !isSuccess) {
       navigate('/')
     }
-  }, [items, navigate])
+  }, [items, navigate, isSuccess])
+
+  useEffect(() => {
+    if (isSuccess) {
+      dispatch(clearCart())
+    }
+  }, [isSuccess, dispatch])
   const form = useFormik({
     initialValues: {
       fullname: '',

@@ -1,4 +1,5 @@
 import Product from '../Product'
+import Loader from '../Loader'
 import { Container, List, Title } from './styles'
 import { Game } from '../../models/Game'
 import { formatPrice } from '../../utils'
@@ -6,11 +7,18 @@ import { formatPrice } from '../../utils'
 export type Props = {
   title: string
   background: 'gray' | 'black'
-  games: Game[]
+  games?: Game[]
   id?: string
+  isLoading?: boolean
 }
 
-const ProductsList = ({ title, background, games, id }: Props) => {
+const ProductsList = ({
+  title,
+  background,
+  games = [],
+  id,
+  isLoading
+}: Props) => {
   const getTags = (game: Game) => {
     const tags = []
     if (game.release_date) {
@@ -24,25 +32,30 @@ const ProductsList = ({ title, background, games, id }: Props) => {
     }
     return tags
   }
+
   return (
     <Container id={id} background={background}>
       <div className="container">
         <Title>{title}</Title>
-        <List>
-          {games.map((game) => (
-            <li key={game.id}>
-              <Product
-                id={game.id}
-                title={game.name}
-                category={game.details.category}
-                platform={game.details.system}
-                description={game.description}
-                infos={getTags(game)}
-                image={game.media.thumbnail}
-              />
-            </li>
-          ))}
-        </List>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <List>
+            {games.map((game) => (
+              <li key={game.id}>
+                <Product
+                  id={game.id}
+                  title={game.name}
+                  category={game.details.category}
+                  platform={game.details.system}
+                  description={game.description}
+                  infos={getTags(game)}
+                  image={game.media.thumbnail}
+                />
+              </li>
+            ))}
+          </List>
+        )}
       </div>
     </Container>
   )

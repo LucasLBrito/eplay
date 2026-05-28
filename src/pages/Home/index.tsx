@@ -1,14 +1,10 @@
 import Banner from '../../components/Banner'
-import Loader from '../../components/Loader'
 import ProductsList from '../../components/ProductsList'
-
 import { useGetOnSaleQuery, useGetSoonQuery } from '../../services/api'
 
 const Home = () => {
-  const { data: promocoes } = useGetOnSaleQuery()
-  const { data: emBreve } = useGetSoonQuery()
-
-  if (!promocoes || !emBreve) return <Loader />
+  const { data: promocoes, isLoading: isLoadingPromocoes } = useGetOnSaleQuery()
+  const { data: emBreve, isLoading: isLoadingEmBreve } = useGetSoonQuery()
 
   return (
     <div>
@@ -17,12 +13,14 @@ const Home = () => {
         title="Promoções"
         background="gray"
         games={promocoes}
+        isLoading={isLoadingPromocoes}
         id="on-sale"
       />
       <ProductsList
         title="Em breve"
         background="black"
         games={emBreve}
+        isLoading={isLoadingEmBreve}
         id="soon"
       />
     </div>

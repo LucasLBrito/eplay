@@ -1,28 +1,32 @@
 import { Imagem, Titulo, Precos } from './styles'
 import Button from '../Button'
 import Tag from '../Tag'
+import Loader from '../Loader'
 import { formatPrice } from '../../utils'
 import { useGetFeaturedGameQuery } from '../../services/api'
+import Game from '../../models/Game'
 
 const Banner = () => {
-  const { data: game } = useGetFeaturedGameQuery()
+  const { data: game, isLoading } = useGetFeaturedGameQuery()
 
-  if (!game) {
-    return <h3>Carregando...</h3>
+  if (isLoading) {
+    return <Loader />
   }
 
+  const { media, name, prices, id } = game as Game
+
   return (
-    <Imagem style={{ backgroundImage: `url(${game.media.cover})` }}>
+    <Imagem style={{ backgroundImage: `url(${media.cover})` }}>
       <div className="container">
         <Tag size="big">Destaque do dia</Tag>
         <div>
-          <Titulo>{game.name}</Titulo>
+          <Titulo>{name}</Titulo>
           <Precos>
-            De <span>{formatPrice(game.prices.old)}</span> <br />
-            por apenas {formatPrice(game.prices.current)}
+            De <span>{formatPrice(prices.old)}</span> <br />
+            por apenas {formatPrice(prices.current)}
           </Precos>
         </div>
-        <Button type="link" to={`/product/${game.id}`} title="Comprar Agora">
+        <Button type="link" to={`/product/${id}`} title="Comprar Agora">
           Comprar Agora
         </Button>
       </div>

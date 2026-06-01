@@ -5,9 +5,9 @@ import Gallery from '../../components/Gallery'
 import { useGetGameByIdQuery } from '../../services/api'
 
 const Product = () => {
-  const { id } = useParams()
+  const { id = '' } = useParams()
 
-  const { data: game } = useGetGameByIdQuery(id!)
+  const { data: game } = useGetGameByIdQuery(id)
 
   if (!game) {
     return <h3>Carregando...</h3>

@@ -4,11 +4,7 @@ import Button from '../Button'
 import Game from '../../models/Game'
 import { formatPrice } from '../../utils'
 import { useDispatch } from 'react-redux'
-import {
-  addItem,
-  removeItem,
-  toggleOpen
-} from '../../store/reducers/shoppingCart'
+import { addItem, toggleOpen } from '../../store/reducers/shoppingCart'
 
 type Props = {
   game: Game

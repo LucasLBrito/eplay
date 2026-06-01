@@ -1,4 +1,5 @@
 import { useEffect } from 'react'
+import InputMask from 'react-input-mask'
 import Button from '../../components/Button'
 import Card from '../../components/Card'
 import { InputGroup, Row, TabButton, ErrorMessage, SuccessIcon } from './styles'
@@ -12,14 +13,6 @@ import { RootReducer } from '../../store'
 import { useNavigate } from 'react-router-dom'
 import { clearCart } from '../../store/reducers/shoppingCart'
 import { formatPrice } from '../../utils'
-
-const formatCpf = (value: string) =>
-  value
-    .replace(/\D/g, '')
-    .slice(0, 11)
-    .replace(/(\d{3})(\d)/, '$1.$2')
-    .replace(/(\d{3})(\d)/, '$1.$2')
-    .replace(/(\d{3})(\d{1,2})$/, '$1-$2')
 
 const INSTALLMENT_COUNT = 4
 
@@ -46,6 +39,7 @@ const Checkout = () => {
       dispatch(clearCart())
     }
   }, [isSuccess, dispatch])
+
   const form = useFormik({
     initialValues: {
       fullname: '',
@@ -71,8 +65,7 @@ const Checkout = () => {
         .email('E-mail inválido')
         .required('O e-mail é obrigatório'),
       cpf: Yup.string()
-        .min(14, 'O CPF deve ter 14 dígitos')
-        .max(14, 'O CPF deve ter 14 dígitos')
+        .matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, 'CPF inválido')
         .required('O CPF é obrigatório'),
       deliveryEmail: Yup.string()
         .email('E-mail de entrega inválido')
@@ -92,8 +85,7 @@ const Checkout = () => {
         is: true,
         then: (schema) =>
           schema
-            .min(14, 'O CPF deve ter 14 dígitos')
-            .max(14, 'O CPF deve ter 14 dígitos')
+            .matches(/^\d{3}\.\d{3}\.\d{3}-\d{2}$/, 'CPF inválido')
             .required('O CPF no cartão é obrigatório')
       }),
       nameCard: Yup.string().when('payWithCard', {
@@ -115,11 +107,17 @@ const Checkout = () => {
       }),
       month: Yup.string().when('payWithCard', {
         is: true,
-        then: (schema) => schema.required('O mês de validade é obrigatório')
+        then: (schema) =>
+          schema
+            .matches(/^\d{2}$/, 'Mês inválido')
+            .required('O mês de validade é obrigatório')
       }),
       year: Yup.string().when('payWithCard', {
         is: true,
-        then: (schema) => schema.required('O ano de validade é obrigatório')
+        then: (schema) =>
+          schema
+            .matches(/^\d{4}$/, 'Ano inválido')
+            .required('O ano de validade é obrigatório')
       }),
       cvv: Yup.string().when('payWithCard', {
         is: true,
@@ -259,14 +257,13 @@ const Checkout = () => {
               </InputGroup>
               <InputGroup>
                 <label htmlFor="cpf">CPF</label>
-                <input
+                <InputMask
+                  mask="999.999.999-99"
                   type="text"
                   id="cpf"
                   name="cpf"
                   value={form.values.cpf}
-                  onChange={(e) =>
-                    form.setFieldValue('cpf', formatCpf(e.target.value))
-                  }
+                  onChange={form.handleChange}
                   onBlur={form.handleBlur}
                 />
                 <small>{getErrorMessage('cpf')}</small>
@@ -339,17 +336,13 @@ const Checkout = () => {
                     </InputGroup>
                     <InputGroup>
                       <label htmlFor="cardCpf">CPF do titular do cartão</label>
-                      <input
+                      <InputMask
+                        mask="999.999.999-99"
                         type="text"
                         id="cardCpf"
                         name="cardCpf"
                         value={form.values.cardCpf}
-                        onChange={(e) =>
-                          form.setFieldValue(
-                            'cardCpf',
-                            formatCpf(e.target.value)
-                          )
-                        }
+                        onChange={form.handleChange}
                         onBlur={form.handleBlur}
                       />
                       <small>{getErrorMessage('cardCpf')}</small>
@@ -370,7 +363,8 @@ const Checkout = () => {
                     </InputGroup>
                     <InputGroup>
                       <label htmlFor="cardNumber">Número do cartão</label>
-                      <input
+                      <InputMask
+                        mask="9999 9999 9999 9999"
                         type="text"
                         id="cardNumber"
                         name="cardNumber"
@@ -382,7 +376,8 @@ const Checkout = () => {
                     </InputGroup>
                     <InputGroup maxWidth="123px">
                       <label htmlFor="month">Mês de vencimento</label>
-                      <input
+                      <InputMask
+                        mask="99"
                         type="text"
                         id="month"
                         name="month"
@@ -394,7 +389,8 @@ const Checkout = () => {
                     </InputGroup>
                     <InputGroup maxWidth="123px">
                       <label htmlFor="year">Ano de vencimento</label>
-                      <input
+                      <InputMask
+                        mask="9999"
                         type="text"
                         id="year"
                         name="year"
@@ -406,7 +402,8 @@ const Checkout = () => {
                     </InputGroup>
                     <InputGroup maxWidth="48px">
                       <label htmlFor="cvv">CVV</label>
-                      <input
+                      <InputMask
+                        mask="999"
                         type="text"
                         id="cvv"
                         name="cvv"
